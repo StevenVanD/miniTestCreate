@@ -17,7 +17,7 @@ public class Photo : MonoBehaviour
     private Vector3 v;
     float hoekOver = 0;
     public bool richting;
-    float degreesPerSecond = 90 / 8;
+    float degreesPerSecond = 90;
     float VerplaatsHoek;
 
     // Use this for initialization

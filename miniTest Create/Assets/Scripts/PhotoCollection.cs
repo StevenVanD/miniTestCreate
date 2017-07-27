@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PhotoCollection : MonoBehaviour {
-    private Photo[] photolijst;
     public bool rot = false;
     public Photo foto;
     public float rotation;
@@ -20,11 +19,7 @@ public class PhotoCollection : MonoBehaviour {
     }
     public void createPhotos(int aantal)
     {
-        //Destroy(gameObject);
-        foreach (Photo o in Object.FindObjectsOfType<Photo>())
-        {
-            Destroy(o);
-        }
+        
         for (int i = 0; i < aantal; i++)
         {
             foto.number = i;
@@ -34,6 +29,14 @@ public class PhotoCollection : MonoBehaviour {
             fot.transform.parent = transform;
         }
     }
+    public void destroyPhotos()
+    {
+        foreach (Photo o in transform.GetComponentsInChildren<Photo>())
+        {
+            Destroy(o.gameObject);
+        }
+
+    }
     public void rotateLeft()
     {
         rotation -= 360 / aantalBlok;
@@ -41,7 +44,6 @@ public class PhotoCollection : MonoBehaviour {
         {
             rotation = rotation + 360;
         }
-       //rotating = false;
 
     }
     public void rotateRight()

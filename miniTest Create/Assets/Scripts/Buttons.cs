@@ -7,7 +7,7 @@ public class Buttons : MonoBehaviour {
     Canvas can;
     Animator anim;
     GameObject total;
-    
+
     private RectTransform panelRectTransform;
     public PhotoCollection collection;
     // Use this for initialization
@@ -24,22 +24,20 @@ public class Buttons : MonoBehaviour {
     void Update()
     {
 
-        if (panelRectTransform.anchorMin.y == 1)
-        {
-            total.SetActive(false);
-
-        }
-
     }
+    
     public void changeLeave()
     {
         anim.SetBool("Leave", true);
-        collection.createPhotos((int)total.transform.GetComponentInChildren<Slider>().value);
-        collection.rot = total.transform.GetComponentInChildren<Toggle>().isOn;
+        
+
     }
+    
     public void enter()
     {
         anim.SetBool("Leave", false);
+        collection.destroyPhotos();
+
     }
     public void showSettings()
     {
