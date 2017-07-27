@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<PlaceSearchResponse>
+  <status>OK</status>
+  <result>
+    <name>Zwembad Aalst</name>
+    <type>point_of_interest</type>
+    <type>establishment</type>
+    <formatted_address>Zwembadlaan 2, 9300 Aalst, Belgium</formatted_address>
+    <geometry>
+      <location>
+        <lat>50.9382272</lat>
+        <lng>4.0569297</lng>
+      </location>
+      <viewport>
+        <southwest>
+          <lat>50.9366986</lat>
+          <lng>4.0558351</lng>
+        </southwest>
+        <northeast>
+          <lat>50.9393966</lat>
+          <lng>4.0585330</lng>
+        </northeast>
+      </viewport>
+    </geometry>
+    <rating>3.7</rating>
+    <icon>https://maps.gstatic.com/mapfiles/place_api/icons/generic_business-71.png</icon>
+    <reference>CmRRAAAAoC2jJdIvsluVoWz9CwQMjoSWYCd52BQbdEj9RRVeeJR8rRvAS0_3uobHdt_cQNWF3S8cINfDnkfMCRy8y8fpznYRjYE0c4owEd6miVS5saYJSQuQGy35i0YTXUQRGPItEhCKh4okKrhl3HZsSZzMCwQ-GhQ1avilQ_G3DW2e2XuOlVsnHXLLTw</reference>
+    <id>55449e3b941a3a331f5a0e2b9b40d2fbc3bf1846</id>
+    <opening_hours>
+      <open_now>true</open_now>
+    </opening_hours>
+    <photo>
+      <photo_reference>CmRaAAAAW3Vb2rr3NPfcgfYOkF71nkzC_8QUF8GPTeUleaz_RoTZ5iAMaFmVU0sceLIOcGecQL1r3HbZYmVTPxiAwhgRSW8cMt0b-29I-wZunW0O4Xe7SlmiwWh3kPD2ZppvessrEhDj-YgXKvnWtzqwuzufdHt1GhSHGyDH6cQsVFm_BojbosQM3WUH0Q</photo_reference>
+      <width>1200</width>
+      <height>799</height>
+      <html_attribution>&lt;a href="https://maps.google.com/maps/contrib/113785700115413078020/photos"&gt;Zwembad Aalst&lt;/a&gt;</html_attribution>
+    </photo>
+    <place_id>ChIJbaOobGO9w0cRKijvTfvyb0M</place_id>
+  </result>
+</PlaceSearchResponse>
