@@ -11,6 +11,7 @@ public class PhotoCollection : MonoBehaviour {
     public float rotX;
     public float closestRot;
     public float range;
+    public Sprite sprite;
     // Use this for initialization
     void Start () {
         
@@ -69,6 +70,8 @@ public class PhotoCollection : MonoBehaviour {
         transform.rotation = Quaternion.Euler(0, 0, 0);
         for (int i = 0; i < aantal; i++)
         {
+            foto.GetComponent<SpriteRenderer>().sprite = sprite;
+
             foto.number = i;
             foto.maxNumber = aantal;
             foto.collection = this;

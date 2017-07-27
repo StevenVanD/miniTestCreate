@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PlaceSearchResponse>
+ <status>OK</status>
+ <result>
+  <name>Affligem</name>
+  <type>locality</type>
+  <type>political</type>
+  <formatted_address>Affligem, België</formatted_address>
+  <geometry>
+   <location>
+    <lat>50.9084000</lat>
+    <lng>4.1128100</lng>
+   </location>
+   <viewport>
+    <southwest>
+     <lat>50.8830500</lat>
+     <lng>4.0743641</lng>
+    </southwest>
+    <northeast>
+     <lat>50.9324901</lat>
+     <lng>4.1503601</lng>
+    </northeast>
+   </viewport>
+  </geometry>
+  <icon>https://maps.gstatic.com/mapfiles/place_api/icons/geocode-71.png</icon>
+  <reference>CmRbAAAAH_jvzPviQFpwmTDdH9f1SBpH9qwvtklKd4SuTbiKiHWcA5aSTn5-hSb74ewSgv6i2Z6_iWB_XcOsvyOh8gLyhdcdB2zfauiIh2N5uu-m5gewkOvfNLrz02tqy2IN25M4EhCVwEJ99c9t8UKRV91ciW_3GhTy3y3kETVbsRwERo1-bpvRbgHZfA</reference>
+  <id>fcb9343c4504a9f7b46436ed6676bc9138c99cd2</id>
+  <photo>
+   <photo_reference>CmRaAAAAvYqkJRfEK-EsG-WGdIVxpol1ClLmgesoOpWfR4eo0BnmTcOuMQdBT36e1KIU6hFVAKrVhoYLzOt4zaL1zoRbt7zqNTps2jpkBFnO1ByqH5FIzosOybfMNaNJ1YUlXcpGEhAuVk7HsLIrQHBvPhSegRzaGhRDSKxNjyqM5gBNatwPPti8KmprDg</photo_reference>
+   <width>5312</width>
+   <height>2988</height>
+   <html_attribution>&lt;a href=&quot;https://maps.google.com/maps/contrib/101955413551575397413/photos&quot;&gt;ERNST-JAN Den Dekker&lt;/a&gt;</html_attribution>
+  </photo>
+  <place_id>ChIJ52q8Gli8w0cRA4H5WLShCfQ</place_id>
+ </result>
+</PlaceSearchResponse>

@@ -41,6 +41,9 @@ public class Photo : MonoBehaviour
         {
             transform.rotation = Quaternion.Euler(0, 0, 0);
         }
+
+
+
         if (Input.GetMouseButtonDown(0) == true)
         {
             swipeStartTime = Time.time;
