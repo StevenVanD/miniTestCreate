@@ -35,4 +35,40 @@ public class Buttons : MonoBehaviour {
     {
         anim.SetBool("Leave", true);
     }
+    public void enter()
+    {
+        anim.SetBool("Leave", false);
+    }
+    public void showSettings()
+    {
+
+    }
+    public void changeOrientation()
+    {
+
+    }
+    public void closeSettings()
+    {
+
+    }
+    public void showInfo()
+    {
+
+    }
+    public void closeInfo()
+    {
+
+    }
+    public void moveLeft()
+    {
+
+    }
+    public void moveRight()
+    {
+
+    }
+    public void amountOfScreens(float amount)
+    {
+        print(amount);
+    }
 }
