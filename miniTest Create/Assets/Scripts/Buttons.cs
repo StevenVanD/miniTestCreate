@@ -22,9 +22,11 @@ public class Buttons : MonoBehaviour {
     public Texture2D texture;
     public string test;
     XmlDocument xml;
-
+    string refe = "";
+    public TextAsset infile;
     private IEnumerator loadInfo()
     {
+        
         getURL = "https://maps.googleapis.com/maps/api/place/textsearch/xml?query=" + bluebox.GetComponentInChildren<InputField>().text + "&key=AIzaSyC6JEaOJbC9ut-k713kL2btnWYpM-qqPro";
         xml = new XmlDocument();
         WWW getInfo = new WWW(getURL);
@@ -33,35 +35,65 @@ public class Buttons : MonoBehaviour {
             Debug.Log("waiting");
             yield return new WaitForSeconds(0.1f);
         }
+
+
         
-
-
         yield return getInfo;
-        print(getInfo.text);
         test = getInfo.text;
 
-
-        //XmlSerializer serializer = new XmlSerializer(getInfo);
-
-        //StringReader reader = new StringReader(test);
-        //xml.LoadXml(test);
         xml.Load(new StringReader(test));
+        
+        xml.PreserveWhitespace = true;
+        xml.Save(Path.Combine(Application.dataPath, "xml.xml"));
+        
+        
+        /*
+        //Offline loading, problemen
+        if (File.Exists("xml.xml"))
+        {
+            TextAsset xmlData = new TextAsset();
+            xmlData = (TextAsset)Resources.Load("xml.xml", typeof(TextAsset));
+            // print(xmlData.text);
+            test = infile.text;
+            print(test);
+            xml.Load(new StringReader(test));
+        }
+        else
+        {
+            print("no xml");
+        }
+        */
+
         string xmlPathPattern = "//PlaceSearchResponse/result";
+        print(xml);
         XmlNodeList myNodeList = xml.SelectNodes(xmlPathPattern);
-        string refe = "";
         foreach (XmlNode node in myNodeList)
         {
             XmlNode name = node.FirstChild;
-            print(name.InnerText);
-                XmlNode photo = node.SelectSingleNode("photo");
-                XmlNode photoRef = photo.SelectSingleNode("photo_reference");
-                print(photoRef.InnerText);
+            XmlNode photo = node.SelectSingleNode("photo");
+            XmlNode photoRef = photo.SelectSingleNode("photo_reference");
+            if (refe == "")
+            {
                 refe = photoRef.InnerText;
-                //print(refe);
+            }
 
-        }        //print(xml.FirstChild.FirstChild.FirstChild.InnerText);
+            
+        }
+        
+
+        //xml.Save("xml2.xml");
+        print(test);
+        /* var serializer = new XmlSerializer(typeof(XmlNodeList));
+         var stream = new FileStream(Application.dataPath + "/StreamingAssets/xml.xml", FileMode.Create);
+
+           serializer.Serialize(stream, myNodeList);
+         stream.Close();
+
+
+
+
+         */
         fotoURL = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference="+ refe +"&key=AIzaSyC6JEaOJbC9ut-k713kL2btnWYpM-qqPro";
-        print(fotoURL);
         WWW getFoto = new WWW(fotoURL);
         while (!getFoto.isDone)
         {
@@ -79,7 +111,6 @@ public class Buttons : MonoBehaviour {
 
         }
         //img = textu;
-        //print(getInfo.text);*/
 
     }
     /*void parseXML(string xmlData)
@@ -88,7 +119,6 @@ public class Buttons : MonoBehaviour {
         XmlNodeList myNodeList = xml.SelectNodes(xmlPathPattern);
         foreach (XmlNode node in myNodeList){
             XmlNode name = node.FirstChild;
-            print(name.InnerText);
         }
     }*/
     private void OnGUI()
