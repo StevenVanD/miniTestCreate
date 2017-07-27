@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Photo : MonoBehaviour
 {
-    private string titel;
-    private string infoText;
+    public string titel;
+    public string infoText;
     private Sprite afbeelding;
 
     public int number;
@@ -21,6 +22,7 @@ public class Photo : MonoBehaviour
     public float secondPressPos;
     public float firstPressPos;
     public bool dragging;
+    Animator anim;
 
     void Start()
     {
@@ -64,13 +66,32 @@ public class Photo : MonoBehaviour
     }
     void OnMouseDrag()
     {
-        dragging = true;
+        if(collection.rotX >0.1f || collection.rotX < -0.1f)
+        {
+            dragging = true;
+
+        }
         collection.drag = true;
         collection.rotX = Input.GetAxis("Mouse X") * 15/maxNumber ;
 
     }
     private void OnMouseUp()
     {
+        if (dragging == false)
+        {
+            showInfo();
+        }
+
         dragging = false;
+    }
+    public void showInfo()
+    {
+
+        print("hey");
+        GameObject.Find("Titel").GetComponent<Text>().text = titel;
+        GameObject.Find("Info").GetComponent<Text>().text = infoText;
+        anim = GameObject.Find("InfoPanel").gameObject.GetComponent<Animator>();
+        anim.SetBool("Enter", true);
+
     }
 }

@@ -9,7 +9,9 @@ using System.Xml.Serialization;
 public class Buttons : MonoBehaviour {
     Canvas can;
     Animator anim;
-    
+    Animator anim2;
+    string key1 = "AIzaSyC6JEaOJbC9ut-k713kL2btnWYpM-qqPro";
+    string key2 = "AIzaSyCFi0PGjjJ0CJqWOEry3ZoqZ1due2EdIW0";
     GameObject total;
     GameObject bluebox;
     private RectTransform panelRectTransform;
@@ -23,11 +25,15 @@ public class Buttons : MonoBehaviour {
     public string test;
     XmlDocument xml;
     string refe = "";
+    string titel = "";
+    string info = "";
+    //string refe = "";
     public TextAsset infile;
     private IEnumerator loadInfo()
     {
+        refe = "";
         
-        getURL = "https://maps.googleapis.com/maps/api/place/textsearch/xml?query=" + bluebox.GetComponentInChildren<InputField>().text + "&key=AIzaSyC6JEaOJbC9ut-k713kL2btnWYpM-qqPro";
+       /* getURL = "https://maps.googleapis.com/maps/api/place/textsearch/xml?query=" + bluebox.GetComponentInChildren<InputField>().text.Replace(" ", "+") + "&key=" + key2;
         xml = new XmlDocument();
         WWW getInfo = new WWW(getURL);
         while (!getInfo.isDone)
@@ -43,35 +49,45 @@ public class Buttons : MonoBehaviour {
 
         xml.Load(new StringReader(test));
         
-        xml.PreserveWhitespace = true;
         xml.Save(Path.Combine(Application.dataPath, "xml.xml"));
+        */
         
         
-        /*
         //Offline loading, problemen
         if (File.Exists("xml.xml"))
         {
+            xml = new XmlDocument();
+
             TextAsset xmlData = new TextAsset();
             xmlData = (TextAsset)Resources.Load("xml.xml", typeof(TextAsset));
-            // print(xmlData.text);
             test = infile.text;
             print(test);
+
+
             xml.Load(new StringReader(test));
         }
         else
         {
             print("no xml");
         }
-        */
+        
 
         string xmlPathPattern = "//PlaceSearchResponse/result";
         print(xml);
         XmlNodeList myNodeList = xml.SelectNodes(xmlPathPattern);
+        string type = "";
+        string adres = "";
+        string locatie = "";
+        
         foreach (XmlNode node in myNodeList)
         {
             XmlNode name = node.FirstChild;
+            type = node.SelectSingleNode("type").InnerText;
+            adres = node.SelectSingleNode("formatted_address").InnerText;
+            locatie = "\n    Longitude: " + node.SelectSingleNode("geometry").SelectSingleNode("location").SelectSingleNode("lng").InnerText + "\n    Latitude: " + node.SelectSingleNode("geometry").SelectSingleNode("location").SelectSingleNode("lat").InnerText;
             XmlNode photo = node.SelectSingleNode("photo");
             XmlNode photoRef = photo.SelectSingleNode("photo_reference");
+            titel = name.InnerText;
             if (refe == "")
             {
                 refe = photoRef.InnerText;
@@ -79,21 +95,16 @@ public class Buttons : MonoBehaviour {
 
             
         }
-        
+        foreach (Photo o in collection.transform.GetComponentsInChildren<Photo>())
+        {
+            o.titel = titel;
 
-        //xml.Save("xml2.xml");
+            o.infoText = "Type: " + type + "\n\nAdres: " + adres + "\n\nLocatie: " + locatie;
+        }
+
         print(test);
-        /* var serializer = new XmlSerializer(typeof(XmlNodeList));
-         var stream = new FileStream(Application.dataPath + "/StreamingAssets/xml.xml", FileMode.Create);
 
-           serializer.Serialize(stream, myNodeList);
-         stream.Close();
-
-
-
-
-         */
-        fotoURL = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference="+ refe +"&key=AIzaSyC6JEaOJbC9ut-k713kL2btnWYpM-qqPro";
+        fotoURL = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference="+ refe +"&key=" + key2;
         WWW getFoto = new WWW(fotoURL);
         while (!getFoto.isDone)
         {
@@ -108,9 +119,7 @@ public class Buttons : MonoBehaviour {
         foreach (Photo o in collection.transform.GetComponentsInChildren<Photo>())
         {
             o.GetComponent<SpriteRenderer>().sprite = sprite;
-
         }
-        //img = textu;
 
     }
     /*void parseXML(string xmlData)
@@ -127,9 +136,10 @@ public class Buttons : MonoBehaviour {
     }
     void Start () {
         can = GameObject.FindObjectOfType<Canvas>();
-        
-        anim = can.GetComponentInChildren<Animator>();
         total = can.transform.Find("TotalPanel").gameObject;
+
+        anim = can.GetComponentInChildren<Animator>();
+        anim2 = total.gameObject.transform.Find("ResultPanel").gameObject.GetComponentInChildren<Animator>();
 
         bluebox = total.transform.Find("BlueBox").gameObject;
         panelRectTransform = total.transform as RectTransform;
@@ -144,7 +154,6 @@ public class Buttons : MonoBehaviour {
     
     public void changeLeave()
     {
-        StartCoroutine("loadInfo");
         if (total.GetComponentInChildren<InputField>().text != "" && total.GetComponentInChildren<InputField>().text != "0" && total.GetComponentInChildren<InputField>().text != "-" && total.GetComponentInChildren<InputField>().text != "+" 
             && bluebox.GetComponentInChildren<InputField>().text != "")
         {
@@ -152,23 +161,25 @@ public class Buttons : MonoBehaviour {
             anim.SetBool("Leave", true);
 
         }
+        StartCoroutine("loadInfo");
+
     }
-    
+
     public void enter()
     {
 
         anim.SetBool("Leave", false);
-            collection.destroyPhotos();
+        anim2.SetBool("Enter", false);
+
+        collection.destroyPhotos();
         
 
     }
    
-    public void showInfo()
-    {
 
-    }
     public void closeInfo()
     {
+        anim2.SetBool("Enter", false);
 
     }
     public void moveLeft()
@@ -190,5 +201,9 @@ public class Buttons : MonoBehaviour {
 
         collection.rotateRight();
 
+    }
+    public void OnMouseDown()
+    {
+        
     }
 }

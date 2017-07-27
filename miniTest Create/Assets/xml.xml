@@ -1,1 +1,40 @@
-﻿<?xml version="1.0" encoding="UTF-8"?><PlaceSearchResponse><status>OK</status><result><name>Asse</name><type>locality</type><type>political</type><formatted_address>Asse, Belgium</formatted_address><geometry><location><lat>50.9093730</lat><lng>4.2005478</lng></location><viewport><southwest><lat>50.8735099</lat><lng>4.1389799</lng></southwest><northeast><lat>50.9445601</lat><lng>4.3008700</lng></northeast></viewport></geometry><icon>https://maps.gstatic.com/mapfiles/place_api/icons/geocode-71.png</icon><reference>CmRbAAAApEtmSsMn63rD_IkZwt1fsNYfpnI73OlMoN6YUbcFqMAMuCOIg7HTRUHa66ujiuJZ9aLHvw3RVvLpjYoZ-6rrVT8XX9C6TH6nmHmjp6vY25IxSrMmkGizlXPT2-M82NEKEhBdQrOD_bl8vSwPiJlgmbIdGhQalyMnhyM62VEiw5RK1W3q9crpKQ</reference><id>f6c2ebc4a0467293d52c20f8edea80b8001a2776</id><photo><photo_reference>CmRaAAAAhVDggX9lA9PgwE-XNNJHot1qJZ-bqhxEOIzpGv7wiHjY_ivF0VJQto3U8jamk7kny208vgaQD8_JHGJIqC2uk8GVQPZfWThKMFfedgLFN4qhj55tCq0HDrAfxGlsKOm8EhByrqD8Wsi64lBFtaMujpACGhQSeTPTMUHw7mzV-4YY0Ir26-9MRQ</photo_reference><width>2048</width><height>1362</height><html_attribution>&lt;a href="https://maps.google.com/maps/contrib/115237777818016246910/photos"&gt;Rudy De Saedeleir&lt;/a&gt;</html_attribution></photo><place_id>ChIJcbtjQ5G_w0cR7hXie1KSXWw</place_id></result></PlaceSearchResponse>
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<PlaceSearchResponse>
+  <status>OK</status>
+  <result>
+    <name>Gemeentelijk Zwembad Den Aerberg, Asse</name>
+    <type>point_of_interest</type>
+    <type>establishment</type>
+    <formatted_address>Potaarde 14, 1730 Asse, Belgium</formatted_address>
+    <geometry>
+      <location>
+        <lat>50.9024841</lat>
+        <lng>4.2083734</lng>
+      </location>
+      <viewport>
+        <southwest>
+          <lat>50.9011544</lat>
+          <lng>4.2070182</lng>
+        </southwest>
+        <northeast>
+          <lat>50.9038523</lat>
+          <lng>4.2097161</lng>
+        </northeast>
+      </viewport>
+    </geometry>
+    <rating>3.9</rating>
+    <icon>https://maps.gstatic.com/mapfiles/place_api/icons/generic_business-71.png</icon>
+    <reference>CmRRAAAAVE63kVENOmFtcgA5EN-DTPargpiFVFfpxe5T1MG5ybN-aSUGlV6hRAOceA0FQLypE3zm0LB1OoEM4k4foeK5rJ61FRI34qCrwPY7MF70YwDXRX7P9nPfGbBAnErnUFtgEhDwZgStR6FTJQDmLC7YtfF6GhQr4SN6-LIFLye-BMtrU9HveXPQVQ</reference>
+    <id>92c5deefc929c0e0c04f311746602adae84f6ab7</id>
+    <opening_hours>
+      <open_now>false</open_now>
+    </opening_hours>
+    <photo>
+      <photo_reference>CmRaAAAAUEFj12AybQEo4sdUxrIz8u-J-1mvwrCGMhpJel0H4djD6qn9XXRDgOLzb88QOui0er0odfAacHy7MaZf89aPvgmlmTDj2eHfzMkEraRrtIpcKr8mt24kjjVV-Am1zcI3EhCnWBdFyshRA6vRS6V14kcCGhSkXLkXktKUrRWTXB-IKgThRaxfkg</photo_reference>
+      <width>4640</width>
+      <height>3480</height>
+      <html_attribution>&lt;a href="https://maps.google.com/maps/contrib/117207268681568630585/photos"&gt;Christophe Desmecht&lt;/a&gt;</html_attribution>
+    </photo>
+    <place_id>ChIJOXH0TYS_w0cRNoWJOy913V0</place_id>
+  </result>
+</PlaceSearchResponse>
