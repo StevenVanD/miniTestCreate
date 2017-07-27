@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿/*using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -24,15 +24,15 @@ public class Photo : MonoBehaviour
     void Start()
     {
         rotation = (360 * number / maxNumber + 180) % 360;
-        transform.position = new Vector3(-20 * Mathf.Sin(rotation * Mathf.Deg2Rad), 8 * Mathf.Cos(rotation * Mathf.Deg2Rad) + 3, 20 * Mathf.Cos(rotation * Mathf.Deg2Rad));
-        v = new Vector3(-20 * Mathf.Sin(rotation * Mathf.Deg2Rad), 8 * Mathf.Cos(rotation * Mathf.Deg2Rad) + 3, 20 * Mathf.Cos(rotation * Mathf.Deg2Rad));
+        transform.position = new Vector3(-maxNumber*5 * Mathf.Sin(rotation * Mathf.Deg2Rad), 8 * Mathf.Cos(rotation * Mathf.Deg2Rad) +3, maxNumber * 5 * Mathf.Cos(rotation * Mathf.Deg2Rad));
+        v = new Vector3(-maxNumber * 5 * Mathf.Sin(rotation * Mathf.Deg2Rad), 8 * Mathf.Cos(rotation * Mathf.Deg2Rad)  +3, maxNumber * 5 * Mathf.Cos(rotation * Mathf.Deg2Rad));
 
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        
         VerplaatsHoek = degreesPerSecond * moveSpeed * Time.deltaTime;
         
 
@@ -63,7 +63,7 @@ public class Photo : MonoBehaviour
 
         }
 
-        transform.position = new Vector3(collection.transform.position.x + v.x, collection.transform.position.z + v.z * 0.4f + 4, collection.transform.position.z + v.z);
+        transform.position = new Vector3(collection.transform.position.x + v.x, collection.transform.position.z + v.z * 0.4f -20 - 5*maxNumber, collection.transform.position.z + v.z);
 
         if (collection.rot == true)
         {
@@ -73,6 +73,7 @@ public class Photo : MonoBehaviour
         {
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, 0), moveSpeed * Time.deltaTime);
         }
+        
     }
     public void rotateLeft()
     {
@@ -84,4 +85,4 @@ public class Photo : MonoBehaviour
         richting = false;
         hoekOver -= 360 / maxNumber;
     }
-}
+}*/

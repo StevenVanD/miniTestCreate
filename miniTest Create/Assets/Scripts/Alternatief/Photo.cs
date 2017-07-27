@@ -1,12 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Photo : MonoBehaviour
 {
-    public string titel;
-    public string infoText;
+    private string titel;
+    private string infoText;
     private Sprite afbeelding;
 
     public int number;
@@ -22,14 +21,12 @@ public class Photo : MonoBehaviour
     public float secondPressPos;
     public float firstPressPos;
     public bool dragging;
-    Animator anim;
 
     void Start()
     {
-        //Camera.main.GetComponent<Buttons>().StartCoroutine("loadInfo");
+
         rotation = (360 * number / maxNumber +180) % 360;
-        transform.position = new Vector3(maxNumber * 5 * Mathf.Sin(rotation * Mathf.Deg2Rad), 0, maxNumber * 5 * Mathf.Cos(rotation * Mathf.Deg2Rad) + maxNumber*5 +20);
-        
+        transform.position = new Vector3(maxNumber * 5 * Mathf.Sin(rotation * Mathf.Deg2Rad), 0, maxNumber * 5 * Mathf.Cos(rotation * Mathf.Deg2Rad) + maxNumber*5 +20);        
     }
 
     // Update is called once per frame
@@ -44,9 +41,6 @@ public class Photo : MonoBehaviour
         {
             transform.rotation = Quaternion.Euler(0, 0, 0);
         }
-
-
-
         if (Input.GetMouseButtonDown(0) == true)
         {
             swipeStartTime = Time.time;
@@ -67,32 +61,13 @@ public class Photo : MonoBehaviour
     }
     void OnMouseDrag()
     {
-        if(collection.rotX >0.1f || collection.rotX < -0.1f)
-        {
-            dragging = true;
-
-        }
+        dragging = true;
         collection.drag = true;
         collection.rotX = Input.GetAxis("Mouse X") * 15/maxNumber ;
 
     }
     private void OnMouseUp()
     {
-        if (dragging == false)
-        {
-            showInfo();
-        }
-
         dragging = false;
-    }
-    public void showInfo()
-    {
-
-        print("hey");
-        GameObject.Find("Titel").GetComponent<Text>().text = titel;
-        GameObject.Find("Info").GetComponent<Text>().text = infoText;
-        anim = GameObject.Find("InfoPanel").gameObject.GetComponent<Animator>();
-        anim.SetBool("Enter", true);
-
     }
 }

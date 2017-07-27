@@ -17,7 +17,7 @@ public class TotalPanel : MonoBehaviour {
 	}
     public void Create()
     {
-        collection.createPhotos((int)transform.GetComponentInChildren<Slider>().value);
+        collection.createPhotos(int.Parse (transform.GetComponentInChildren<InputField>().text));
         collection.rot = transform.GetComponentInChildren<Toggle>().isOn;
     }
 
