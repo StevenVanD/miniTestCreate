@@ -5,6 +5,8 @@ using UnityEngine.UI;
 using System.Xml;
 using System.IO;
 using System.Xml.Serialization;
+using System.Net;
+using UnityEditor;
 
 public class Buttons : MonoBehaviour {
     Canvas can;
@@ -27,113 +29,257 @@ public class Buttons : MonoBehaviour {
     string refe = "";
     string titel = "";
     string info = "";
-    //string refe = "";
+    bool realPlace;
+
     public TextAsset infile;
+
+
+    public static bool HasConnection()
+    {
+        try
+        {
+            using (var client = new WebClient())
+            using (var stream = new WebClient().OpenRead("http://www.google.com"))
+            {
+                return true;
+            }
+        }
+        catch
+        {
+            return false;
+        }
+    }
+
     private IEnumerator loadInfo()
     {
+        yield return new WaitForSeconds(0.5f);
+
         refe = "";
         
-       /* getURL = "https://maps.googleapis.com/maps/api/place/textsearch/xml?query=" + bluebox.GetComponentInChildren<InputField>().text.Replace(" ", "+") + "&key=" + key2;
+        getURL = "https://maps.googleapis.com/maps/api/place/textsearch/xml?query=" + bluebox.GetComponentInChildren<InputField>().text.Replace(" ", "+") + "&key=" + key1;
         xml = new XmlDocument();
         WWW getInfo = new WWW(getURL);
-        while (!getInfo.isDone)
+        if (HasConnection() != true)
         {
-            Debug.Log("waiting");
-            yield return new WaitForSeconds(0.1f);
-        }
+            print("offline");
+            //Offline loading, problemen
+            if (File.Exists("xml.xml"))
+            {
+                // xml = new XmlDocument();
+
+                TextAsset xmlData = new TextAsset();
+                xmlData = (TextAsset)Resources.Load("xml.xml", typeof(TextAsset));
+                test = infile.text;
+                print(test);
 
 
-        
-        yield return getInfo;
-        test = getInfo.text;
+                xml.Load(new StringReader(test));
+            }
+            else
+            {
+                print("no xml");
+            }
+            string xmlPathPattern = "//PlaceSearchResponse/result";
+            print(xml);
+            XmlNodeList myNodeList = xml.SelectNodes(xmlPathPattern);
+            string type = "";
+            string adres = "";
+            string locatie = "";
 
-        xml.Load(new StringReader(test));
-        
-        xml.Save(Path.Combine(Application.dataPath, "xml.xml"));
-        */
-        
-        
-        //Offline loading, problemen
-        if (File.Exists("xml.xml"))
-        {
-            xml = new XmlDocument();
-
-            TextAsset xmlData = new TextAsset();
-            xmlData = (TextAsset)Resources.Load("xml.xml", typeof(TextAsset));
-            test = infile.text;
-            print(test);
+            foreach (XmlNode node in myNodeList)
+            {
+                XmlNode name = node.FirstChild;
+                type = node.SelectSingleNode("type").InnerText;
+                adres = node.SelectSingleNode("formatted_address").InnerText;
+                locatie = "\n    Longitude: " + node.SelectSingleNode("geometry").SelectSingleNode("location").SelectSingleNode("lng").InnerText + "\n    Latitude: " + node.SelectSingleNode("geometry").SelectSingleNode("location").SelectSingleNode("lat").InnerText;
+                titel = name.InnerText;
+                if (refe == "")
+                {
+                }
 
 
-            xml.Load(new StringReader(test));
+
+            }
+            foreach (Photo o in collection.transform.GetComponentsInChildren<Photo>())
+            {
+                o.titel = titel;
+
+                o.infoText = "Type: " + type + "\n\nAdres: " + adres + "\n\nLocatie: " + locatie;
+            }
+
+
+            //foto
+            //AssetDatabase.CreateAsset(texture, "Assets/texture.asset");
+
+            texture = (Texture2D) AssetDatabase.LoadAssetAtPath("Assets/texture.asset", typeof (Texture2D));
+            sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), Vector2.one / 2);
+
+          
         }
         else
         {
-            print("no xml");
-        }
-        
-
-        string xmlPathPattern = "//PlaceSearchResponse/result";
-        print(xml);
-        XmlNodeList myNodeList = xml.SelectNodes(xmlPathPattern);
-        string type = "";
-        string adres = "";
-        string locatie = "";
-        
-        foreach (XmlNode node in myNodeList)
-        {
-            XmlNode name = node.FirstChild;
-            type = node.SelectSingleNode("type").InnerText;
-            adres = node.SelectSingleNode("formatted_address").InnerText;
-            locatie = "\n    Longitude: " + node.SelectSingleNode("geometry").SelectSingleNode("location").SelectSingleNode("lng").InnerText + "\n    Latitude: " + node.SelectSingleNode("geometry").SelectSingleNode("location").SelectSingleNode("lat").InnerText;
-            XmlNode photo = node.SelectSingleNode("photo");
-            XmlNode photoRef = photo.SelectSingleNode("photo_reference");
-            titel = name.InnerText;
-            if (refe == "")
+            while (!getInfo.isDone)
             {
-                refe = photoRef.InnerText;
+                Debug.Log("waiting");
+                yield return new WaitForSeconds(0.1f);
             }
+            yield return getInfo;
+            test = getInfo.text;
 
+            xml.Load(new StringReader(test));
+
+
+            string xmlPathPattern0 = "//PlaceSearchResponse";
+            XmlNodeList myNodeList0 = xml.SelectNodes(xmlPathPattern0);
+            realPlace = false;
+            foreach (XmlNode node in myNodeList0)
+            {
+                XmlNode status = node.FirstChild;
+                if (status.InnerText == "OK")
+                {
+                    realPlace = true;
+                }
+            }
+            xmlPathPattern0 = "//PlaceSearchResponse/result";
+            myNodeList0 = xml.SelectNodes(xmlPathPattern0);
+            foreach (XmlNode node in myNodeList0)
+            {
+                try
+                {
+                    XmlNode photo = node.SelectSingleNode("photo");
+                    if (photo.HasChildNodes == true)
+                    {
+                        realPlace = true;
+                    }
+                }
+                catch
+                {
+                    realPlace = false;
+
+                }
+            }
             
+            if (realPlace == true)
+            {
+                xml.Save(Path.Combine(Application.dataPath, "xml.xml"));
+
+
+                string xmlPathPattern = "//PlaceSearchResponse/result";
+                XmlNodeList myNodeList = xml.SelectNodes(xmlPathPattern);
+                string type = "";
+                string adres = "";
+                string locatie = "";
+
+                foreach (XmlNode node in myNodeList)
+                {
+                    XmlNode name = node.SelectSingleNode("name");
+                    type = node.SelectSingleNode("type").InnerText;
+                    adres = node.SelectSingleNode("formatted_address").InnerText;
+                    locatie = "\n    Longitude: " + node.SelectSingleNode("geometry").SelectSingleNode("location").SelectSingleNode("lng").InnerText + "\n    Latitude: " + node.SelectSingleNode("geometry").SelectSingleNode("location").SelectSingleNode("lat").InnerText;
+                    XmlNode photo = node.SelectSingleNode("photo");
+                    XmlNode photoRef = photo.SelectSingleNode("photo_reference");
+                    titel = name.InnerText;
+                    if (refe == "")
+                    {
+                        refe = photoRef.InnerText;
+                    }
+
+
+                }
+                foreach (Photo o in collection.transform.GetComponentsInChildren<Photo>())
+                {
+                    o.titel = titel;
+
+                    o.infoText = "Type: " + type + "\n\nAdres: " + adres + "\n\nLocatie: " + locatie;
+                }
+
+                //foto
+                fotoURL = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=" + refe + "&key=" + key1;
+                WWW getFoto = new WWW(fotoURL);
+                while (!getFoto.isDone)
+                {
+                    Debug.Log("waiting");
+                    yield return new WaitForSeconds(0.1f);
+                }
+                yield return getFoto;
+
+                texture = getFoto.texture;
+                AssetDatabase.CreateAsset(texture, "Assets/texture.asset");
+                sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), Vector2.one / 2);
+            }
+            else
+            {
+                print("offline");
+                //Offline loading, problemen
+                if (File.Exists("xml.xml"))
+                {
+                    // xml = new XmlDocument();
+
+                    TextAsset xmlData = new TextAsset();
+                    xmlData = (TextAsset)Resources.Load("xml.xml", typeof(TextAsset));
+                    test = infile.text;
+                    print(test);
+
+
+                    xml.Load(new StringReader(test));
+                }
+                else
+                {
+                    print("no xml");
+                }
+                string xmlPathPattern = "//PlaceSearchResponse/result";
+                print(xml);
+                XmlNodeList myNodeList = xml.SelectNodes(xmlPathPattern);
+                string type = "";
+                string adres = "";
+                string locatie = "";
+
+                foreach (XmlNode node in myNodeList)
+                {
+                    XmlNode name = node.FirstChild;
+                    type = node.SelectSingleNode("type").InnerText;
+                    adres = node.SelectSingleNode("formatted_address").InnerText;
+                    locatie = "\n    Longitude: " + node.SelectSingleNode("geometry").SelectSingleNode("location").SelectSingleNode("lng").InnerText + "\n    Latitude: " + node.SelectSingleNode("geometry").SelectSingleNode("location").SelectSingleNode("lat").InnerText;
+                    titel = name.InnerText;
+                    
+
+
+                }
+                foreach (Photo o in collection.transform.GetComponentsInChildren<Photo>())
+                {
+                    o.titel = titel;
+
+                    o.infoText = "Type: " + type + "\n\nAdres: " + adres + "\n\nLocatie: " + locatie;
+                }
+
+
+                //foto
+                //AssetDatabase.CreateAsset(texture, "Assets/texture.asset");
+
+                texture = (Texture2D)AssetDatabase.LoadAssetAtPath("Assets/texture.asset", typeof(Texture2D));
+                sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), Vector2.one / 2);
+
+            }
         }
-        foreach (Photo o in collection.transform.GetComponentsInChildren<Photo>())
-        {
-            o.titel = titel;
 
-            o.infoText = "Type: " + type + "\n\nAdres: " + adres + "\n\nLocatie: " + locatie;
-        }
+       
 
-        print(test);
 
-        fotoURL = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference="+ refe +"&key=" + key2;
-        WWW getFoto = new WWW(fotoURL);
-        while (!getFoto.isDone)
-        {
-            Debug.Log("waiting");
-            yield return new WaitForSeconds(0.1f);
-        }
-        yield return getFoto;
 
-        texture = getFoto.texture;
-        sprite = Sprite.Create(texture, new Rect(0, 0,texture.width, texture.height), Vector2.one / 2);
-        collection.sprite = sprite;
+
+
+
         foreach (Photo o in collection.transform.GetComponentsInChildren<Photo>())
         {
             o.GetComponent<SpriteRenderer>().sprite = sprite;
         }
 
     }
-    /*void parseXML(string xmlData)
-    {
-        string xmlPathPattern = "//PlaceSearchResponse/result";
-        XmlNodeList myNodeList = xml.SelectNodes(xmlPathPattern);
-        foreach (XmlNode node in myNodeList){
-            XmlNode name = node.FirstChild;
-        }
-    }*/
-    private void OnGUI()
-    {
-       // GUILayout.Label(texture);
-    }
+
+    
+    
+
+
     void Start () {
         can = GameObject.FindObjectOfType<Canvas>();
         total = can.transform.Find("TotalPanel").gameObject;

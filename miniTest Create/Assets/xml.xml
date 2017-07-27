@@ -2,39 +2,35 @@
 <PlaceSearchResponse>
   <status>OK</status>
   <result>
-    <name>Gemeentelijk Zwembad Den Aerberg, Asse</name>
-    <type>point_of_interest</type>
-    <type>establishment</type>
-    <formatted_address>Potaarde 14, 1730 Asse, Belgium</formatted_address>
+    <name>Evergem</name>
+    <type>locality</type>
+    <type>political</type>
+    <formatted_address>Evergem, Belgium</formatted_address>
     <geometry>
       <location>
-        <lat>50.9024841</lat>
-        <lng>4.2083734</lng>
+        <lat>51.1099708</lat>
+        <lng>3.7067221</lng>
       </location>
       <viewport>
         <southwest>
-          <lat>50.9011544</lat>
-          <lng>4.2070182</lng>
+          <lat>51.0876332</lat>
+          <lng>3.6322900</lng>
         </southwest>
         <northeast>
-          <lat>50.9038523</lat>
-          <lng>4.2097161</lng>
+          <lat>51.1985500</lat>
+          <lng>3.7961301</lng>
         </northeast>
       </viewport>
     </geometry>
-    <rating>3.9</rating>
-    <icon>https://maps.gstatic.com/mapfiles/place_api/icons/generic_business-71.png</icon>
-    <reference>CmRRAAAAVE63kVENOmFtcgA5EN-DTPargpiFVFfpxe5T1MG5ybN-aSUGlV6hRAOceA0FQLypE3zm0LB1OoEM4k4foeK5rJ61FRI34qCrwPY7MF70YwDXRX7P9nPfGbBAnErnUFtgEhDwZgStR6FTJQDmLC7YtfF6GhQr4SN6-LIFLye-BMtrU9HveXPQVQ</reference>
-    <id>92c5deefc929c0e0c04f311746602adae84f6ab7</id>
-    <opening_hours>
-      <open_now>false</open_now>
-    </opening_hours>
+    <icon>https://maps.gstatic.com/mapfiles/place_api/icons/geocode-71.png</icon>
+    <reference>CmRbAAAAXri0cDfNHDeI81PLW45lZsK8knjgKUForyVXPNhNrh7VC5rv3-sWLIfr3LwXdVkIiwLr_Pt9ACfeLTQOzH6vzTZIbqN0RguBjKMFYvqFcLcmaPmmz6MWak2MPpEQgJcEEhCmtMxwZoOGlkf3bDkxeIKNGhTekTjK20t1CF1a7SB7458TIUlBdQ</reference>
+    <id>c08bc00b7933eb140941d8cb615b6602cc7362ca</id>
     <photo>
-      <photo_reference>CmRaAAAAUEFj12AybQEo4sdUxrIz8u-J-1mvwrCGMhpJel0H4djD6qn9XXRDgOLzb88QOui0er0odfAacHy7MaZf89aPvgmlmTDj2eHfzMkEraRrtIpcKr8mt24kjjVV-Am1zcI3EhCnWBdFyshRA6vRS6V14kcCGhSkXLkXktKUrRWTXB-IKgThRaxfkg</photo_reference>
-      <width>4640</width>
-      <height>3480</height>
-      <html_attribution>&lt;a href="https://maps.google.com/maps/contrib/117207268681568630585/photos"&gt;Christophe Desmecht&lt;/a&gt;</html_attribution>
+      <photo_reference>CmRaAAAAOKcBMHWlzb45_uePIa_xsZe6qquOcQQxEQ5s70RmiJN7hN6Fe4xvvcMdfgCaZBXGJfk9C0qXyWaHhDPrqttzPfYJH7Nqs0KUMZYCsC1dt-J3FHvvJyZY7vMQ7ZGy8InYEhDOgSmk9wPAslsgJ6AfLst6GhRmjoIkKLyeqhqa_XAJ4t7N5xUQjQ</photo_reference>
+      <width>2272</width>
+      <height>1704</height>
+      <html_attribution>&lt;a href="https://maps.google.com/maps/contrib/102227266810585023059/photos"&gt;Juan Manuel Rey Zamora&lt;/a&gt;</html_attribution>
     </photo>
-    <place_id>ChIJOXH0TYS_w0cRNoWJOy913V0</place_id>
+    <place_id>ChIJl7Pv-IRww0cRT6eT4csuXz4</place_id>
   </result>
 </PlaceSearchResponse>

@@ -67,8 +67,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   titel: 
   infoText: 
-  number: 8
-  maxNumber: 9
+  number: 4
+  maxNumber: 5
   rotation: 0
   moveSpeed: 5
   collection: {fileID: 0}
@@ -116,7 +116,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 4, y: 3}
+  m_Size: {x: 4, y: 2.66}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0

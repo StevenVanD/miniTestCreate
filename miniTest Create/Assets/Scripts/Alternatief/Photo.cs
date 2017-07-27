@@ -26,9 +26,10 @@ public class Photo : MonoBehaviour
 
     void Start()
     {
-
+        //Camera.main.GetComponent<Buttons>().StartCoroutine("loadInfo");
         rotation = (360 * number / maxNumber +180) % 360;
-        transform.position = new Vector3(maxNumber * 5 * Mathf.Sin(rotation * Mathf.Deg2Rad), 0, maxNumber * 5 * Mathf.Cos(rotation * Mathf.Deg2Rad) + maxNumber*5 +20);        
+        transform.position = new Vector3(maxNumber * 5 * Mathf.Sin(rotation * Mathf.Deg2Rad), 0, maxNumber * 5 * Mathf.Cos(rotation * Mathf.Deg2Rad) + maxNumber*5 +20);
+        
     }
 
     // Update is called once per frame

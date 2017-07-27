@@ -22,7 +22,6 @@ public class PhotoCollection : MonoBehaviour {
         aantalBlok = Object.FindObjectsOfType<Photo>().Length;
         closestRot = 0;
 
-
         // transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y % 360, transform.rotation.z); ;
         if (drag == false)
         {
