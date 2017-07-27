@@ -1,20 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Buttons : MonoBehaviour {
     Canvas can;
     Animator anim;
     GameObject total;
+    
     private RectTransform panelRectTransform;
-
+    public PhotoCollection collection;
     // Use this for initialization
     void Start () {
         can = GameObject.FindObjectOfType<Canvas>();
-        //can = GetComponent<Canvas>();
 
         anim = can.GetComponentInChildren<Animator>();
-        //can = GetComponent<Canvas>();
         total = can.transform.GetChild(0).gameObject;
         panelRectTransform = total.transform as RectTransform;
 
@@ -34,6 +34,8 @@ public class Buttons : MonoBehaviour {
     public void changeLeave()
     {
         anim.SetBool("Leave", true);
+        collection.createPhotos((int)total.transform.GetComponentInChildren<Slider>().value);
+        collection.rot = total.transform.GetComponentInChildren<Toggle>().isOn;
     }
     public void enter()
     {
@@ -61,14 +63,23 @@ public class Buttons : MonoBehaviour {
     }
     public void moveLeft()
     {
+        foreach (Photo o in collection.transform.GetComponentsInChildren<Photo>())
+        {
+            o.rotateLeft();
+        }
 
+        //collection.rotateLeft();
     }
     public void moveRight()
     {
+        foreach (Photo o in collection.transform.GetComponentsInChildren<Photo>())
+        {
+            o.rotateRight();
+        }
+        //collection.rotateRight();
 
     }
     public void amountOfScreens(float amount)
     {
-        print(amount);
     }
 }
