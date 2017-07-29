@@ -2,35 +2,35 @@
 <PlaceSearchResponse>
   <status>OK</status>
   <result>
-    <name>Aalst</name>
+    <name>Asse</name>
     <type>locality</type>
     <type>political</type>
-    <formatted_address>Aalst, Belgium</formatted_address>
+    <formatted_address>Asse, Belgium</formatted_address>
     <geometry>
       <location>
-        <lat>50.9378101</lat>
-        <lng>4.0409517</lng>
+        <lat>50.9093730</lat>
+        <lng>4.2005478</lng>
       </location>
       <viewport>
         <southwest>
-          <lat>50.8994047</lat>
-          <lng>3.9823401</lng>
+          <lat>50.8735099</lat>
+          <lng>4.1389799</lng>
         </southwest>
         <northeast>
-          <lat>50.9948401</lat>
-          <lng>4.1638800</lng>
+          <lat>50.9445601</lat>
+          <lng>4.3008700</lng>
         </northeast>
       </viewport>
     </geometry>
     <icon>https://maps.gstatic.com/mapfiles/place_api/icons/geocode-71.png</icon>
-    <reference>CmRbAAAAHuX72yKKTW2kLagKA32iBg573ncHPmeIdc1IHm7aYbiBqrjAv6b7o6TnmSl0ff0dFRvTJyF5WvT0g4VkXglgMeV1NVE2Un7BfB0UnxFF6PVPdCf_rwehMsQydRurGX-4EhA4CIOgWlJaVph-DkZqD0bqGhQKwFNT992aqcQqekUzjuV4zfDWOw</reference>
-    <id>d90fcee12b80874162e058bce08889d83281cac8</id>
+    <reference>CmRbAAAAeNZ4gXwlWSr7l3omGL7AukoAGZd-29fnXEcMD6E29pZfLYNajnfXA0Xqgow5YdAiTxPCYwtg6q9LGJYMxL97l8O2k3TcQbV1wD0GleQdB5zoqJcN8XjD-wIZOZEx6cZ6EhBWnOHLDugRKB6hkXVK0Y9KGhQWTLRH_hj_ZWz_fVvHGIgN3GgINg</reference>
+    <id>f6c2ebc4a0467293d52c20f8edea80b8001a2776</id>
     <photo>
-      <photo_reference>CmRZAAAAAhpFWmYmNkk_ILjd_xr5Y-5cwvNq-dbHYuRnwS0iVRxvd6MTg4_k4TF7pUUI5x2XReAXezhv2SYaD8A5hYzQSErQC4lLnEPcpqOiEjUv8foreYPgjry7Tmu0pMyqc5S0EhDx70BX3Sl9_SR9QwtuztW5GhT_nRmJfq7XWk90ni8RLc3pPh8MJQ</photo_reference>
-      <width>4160</width>
-      <height>3120</height>
-      <html_attribution>&lt;a href="https://maps.google.com/maps/contrib/113283069061806780944/photos"&gt;Ola Wyso&lt;/a&gt;</html_attribution>
+      <photo_reference>CmRaAAAAMnhoCNKE6ukdFXSBpHHvNIWmlRgWbxcxf0YGqGaXMFTKbb2POTBtTGr6sGLpYwgNUul_nv2GNso1C38dIcPvBn6hAK0wLWi3NeywQ1oVPrHwIL8ErTmNXlY9in2Mi8jVEhA-6JZKrUTPRb4tullyJooVGhRx1zxHX_G-pyOZroELRDEaaWSfwA</photo_reference>
+      <width>2048</width>
+      <height>1362</height>
+      <html_attribution>&lt;a href="https://maps.google.com/maps/contrib/115237777818016246910/photos"&gt;Rudy De Saedeleir&lt;/a&gt;</html_attribution>
     </photo>
-    <place_id>ChIJSUnEU9OXw0cRIExNL6uZAAQ</place_id>
+    <place_id>ChIJcbtjQ5G_w0cR7hXie1KSXWw</place_id>
   </result>
 </PlaceSearchResponse>

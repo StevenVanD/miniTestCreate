@@ -2,33 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Klasse om de photo objecten the beheren + groep manipulatie
 public class PhotoCollection : MonoBehaviour {
-    public bool rot = false;
+    public bool roteren = false;
     public bool drag;
     private int aantalBlok;
-    private float rotation;
-    public float rotX;
+    private float rotationAngle;
+    public float rotSpeed;
     private float closestRot;
     public Photo foto;
 
     void Update () {
-        aantalBlok = Object.FindObjectsOfType<Photo>().Length;
         closestRot = 0;
 
+        //Als men niet dragt, dan roteert de collectie naar een bepaalde hoek
         if (drag == false)
         {
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, rotation, 0), 5 * Time.deltaTime);
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, rotationAngle, 0), 5 * Time.deltaTime);
         }
+        //Anders wordt de snelheid bijgehouden
         else
         {
             for (int i = 0; i < aantalBlok; i++)
             {
-                float offset = 810;
-
-                for (int j = 0; j < aantalBlok ; j++)
-                {
-                    offset -= 360 / Mathf.Pow(2, j);
-                }
+                float offset = 360*1.5f/aantalBlok;
 
                 if (transform.eulerAngles.y > -offset + 360 * i / aantalBlok + 360 / aantalBlok
                     && transform.eulerAngles.y < -offset + 360 * (i + 1) / aantalBlok + 360 / aantalBlok)
@@ -36,20 +33,22 @@ public class PhotoCollection : MonoBehaviour {
                     closestRot =  i *360 / aantalBlok;
                 }
             }
-            rotation = closestRot;
+            rotationAngle = closestRot;
         }
-
-        if (rotX < 0.5f*3/aantalBlok && rotX > -0.5f*3/aantalBlok)
+        
+        //Als de rotatie snelheid te traag is stopt het drag-gedrag
+        if (rotSpeed < 0.5f*3/aantalBlok && rotSpeed > -0.5f*3/aantalBlok)
         {
-            rotX = 0;
+            rotSpeed = 0;
             drag = false;
         }
     }
 
+    //Aanmaken van photo objecten
     public void createPhotos(int aantal)
     {
         transform.position = new Vector3(0, 0, (aantal * 5 + 20));
-        rotation = 0;
+        rotationAngle = 0;
         transform.rotation = Quaternion.Euler(0, 0, 0);
 
         for (int i = 0; i < aantal; i++)
@@ -60,8 +59,10 @@ public class PhotoCollection : MonoBehaviour {
             Photo fot =  Instantiate(foto);
             fot.transform.parent = transform;
         }
+        aantalBlok = Object.FindObjectsOfType<Photo>().Length;
     }
 
+    //Vernietigen van photo objecten
     public void destroyPhotos()
     {
         foreach (Photo o in transform.GetComponentsInChildren<Photo>())
@@ -70,21 +71,23 @@ public class PhotoCollection : MonoBehaviour {
         }
     }
 
+    //Links roteren
     public void rotateLeft()
     {
-        rotation -= 360 / aantalBlok;
-        if (rotation <= 0)
+        rotationAngle -= 360 / aantalBlok;
+        if (rotationAngle <= 0)
         {
-            rotation = rotation + 360;
+            rotationAngle = rotationAngle + 360;
         }
     }
 
+    //Rects roteren
     public void rotateRight()
     {
-        rotation += 360 / aantalBlok;
-        if (rotation >= 360)
+        rotationAngle += 360 / aantalBlok;
+        if (rotationAngle >= 360)
         {
-            rotation = rotation - 360;
+            rotationAngle = rotationAngle - 360;
         }
     }
 }

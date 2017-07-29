@@ -6,9 +6,10 @@ using UnityEngine.UI;
 public class TotalPanel : MonoBehaviour {
     public PhotoCollection collection;
 
-    public void Create()
+    //Wordt geactiveerd tijdens een animatie.
+    public void create()
     {
         collection.createPhotos(int.Parse(transform.GetComponentInChildren<InputField>().text));
-        collection.rot = transform.GetComponentInChildren<Toggle>().isOn;
+        collection.roteren = transform.GetComponentInChildren<Toggle>().isOn;
     }
 }

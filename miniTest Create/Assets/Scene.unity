@@ -360,9 +360,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a82f11f1f17e1c41aa6590c74913a53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rot: 0
+  roteren: 0
   drag: 0
-  rotX: 0
+  rotSpeed: 0
   foto: {fileID: 114671891049835444, guid: 946879a783da34b46b96254a6eead9b8, type: 2}
 --- !u!1 &251079924
 GameObject:
@@ -1204,10 +1204,10 @@ RectTransform:
   m_Father: {fileID: 1864677097}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.3485726, y: 0.6804804}
-  m_AnchorMax: {x: 0.64813983, y: 0.77900004}
-  m_AnchoredPosition: {x: 0.5, y: -0.099998474}
-  m_SizeDelta: {x: 0, y: 0.3000002}
+  m_AnchorMin: {x: 0.20781757, y: 0.66}
+  m_AnchorMax: {x: 0.7891825, y: 0.88100004}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0.39999962}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &792930744
 MonoBehaviour:
@@ -2911,7 +2911,7 @@ GameObject:
   - component: {fileID: 2078919402}
   - component: {fileID: 2078919401}
   m_Layer: 5
-  m_Name: Titel
+  m_Name: Naam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
